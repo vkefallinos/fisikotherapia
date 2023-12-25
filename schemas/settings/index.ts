@@ -15,7 +15,7 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your blog.',
+      description: 'This field is the title of your website.',
       title: 'Title',
       type: 'string',
       initialValue: demo.title,
