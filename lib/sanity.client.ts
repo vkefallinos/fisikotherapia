@@ -8,12 +8,40 @@ import {
 import {
   indexQuery,
   type Post,
-  postAndMoreStoriesQuery,
-  postBySlugQuery,
-  postSlugsQuery,
+
   type Settings,
   settingsQuery,
 } from 'lib/sanity.queries'
+// Schema types
+import {
+  Physiotherapist,
+  Education,
+  WorkExperience,
+  License,
+  ConditionCategory,
+  Condition,
+  TherapyMethod,
+  TherapyProgram,
+  Exercise
+} from './sanity.queries'
+
+// Queries
+import {
+  physiotherapistsQuery,
+  physiotherapistBySlugQuery,
+  educationQuery,
+  workExperienceQuery,
+  licensesQuery,
+  conditionCategoriesQuery,
+  conditionCategoryBySlugQuery,
+  conditionsQuery,
+  conditionBySlugQuery,
+  therapyMethodsQuery,
+  therapyProgramsQuery,
+  exercisesQuery,
+  exerciseBySlugQuery
+} from './sanity.queries'
+
 import { createClient, type SanityClient } from 'next-sanity'
 
 export function getClient(preview?: { token: string }): SanityClient {
@@ -50,22 +78,69 @@ export async function getAllPosts(client: SanityClient): Promise<Post[]> {
   return (await client.fetch(indexQuery)) || []
 }
 
-export async function getAllPostsSlugs(): Promise<Pick<Post, 'slug'>[]> {
-  const client = getClient()
-  const slugs = (await client.fetch<string[]>(postSlugsQuery)) || []
-  return slugs.map((slug) => ({ slug }))
+
+
+// Get all physiotherapists
+export async function getAllPhysiotherapists(client: SanityClient) {
+  return await client.fetch(physiotherapistsQuery);
 }
 
-export async function getPostBySlug(
-  client: SanityClient,
-  slug: string,
-): Promise<Post> {
-  return (await client.fetch(postBySlugQuery, { slug })) || ({} as any)
+// Get a single physiotherapist by slug
+export async function getPhysiotherapistBySlug(client: SanityClient, slug: string) {
+  return await client.fetch(physiotherapistBySlugQuery, {slug}); 
 }
 
-export async function getPostAndMoreStories(
-  client: SanityClient,
-  slug: string,
-): Promise<{ post: Post; morePosts: Post[] }> {
-  return await client.fetch(postAndMoreStoriesQuery, { slug })
+// Get all education documents
+export async function getAllEducation(client: SanityClient) {
+  return await client.fetch(educationQuery);
+}
+
+// Get all work experience documents
+export async function getAllWorkExperience(client: SanityClient) {
+  return await client.fetch(workExperienceQuery);
+}
+
+// Get all licenses 
+export async function getAllLicenses(client: SanityClient) {
+  return await client.fetch(licensesQuery);
+}
+
+// Get all condition categories
+export async function getAllConditionCategories(client: SanityClient) {
+  return await client.fetch(conditionCategoriesQuery);
+}
+
+// Get a single condition category by slug
+export async function getConditionCategoryBySlug(client: SanityClient, slug: string) {
+  return await client.fetch(conditionCategoryBySlugQuery, {slug});
+}
+
+// Get all conditions
+export async function getAllConditions(client: SanityClient) {
+  return await client.fetch(conditionsQuery); 
+}
+
+// Get a single condition by slug
+export async function getConditionBySlug(client: SanityClient, slug: string) {
+  return await client.fetch(conditionBySlugQuery, {slug});
+} 
+
+// Get all therapy methods
+export async function getAllTherapyMethods(client: SanityClient) {
+  return await client.fetch(therapyMethodsQuery);
+}
+
+// Get all therapy programs
+export async function getAllTherapyPrograms(client: SanityClient) {
+  return await client.fetch(therapyProgramsQuery);
+}
+
+// Get all exercises 
+export async function getAllExercises(client: SanityClient) {
+  return await client.fetch(exercisesQuery);
+}
+
+// Get a single exercise by slug
+export async function getExerciseBySlug(client: SanityClient, slug: string) {
+  return await client.fetch(exerciseBySlugQuery, {slug});
 }
