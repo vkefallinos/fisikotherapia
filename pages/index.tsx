@@ -1,17 +1,14 @@
 import IndexPage from 'components/IndexPage'
 import PreviewIndexPage from 'components/PreviewIndexPage'
+import { init } from 'lib/demo.data'
 import { readToken } from 'lib/sanity.api'
-import {
-  getAllPhysiotherapists,
-  getClient,
-  getSettings,
-} from 'lib/sanity.client'
+import { getHomeData, getClient, getSettings } from 'lib/sanity.client'
 import { Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import type { SharedPageProps } from 'pages/_app'
 
 interface PageProps extends SharedPageProps {
-  posts: Post[]
+  data: any
   settings: Settings
 }
 
@@ -20,27 +17,30 @@ interface Query {
 }
 
 export default function Page(props: PageProps) {
-  const { posts, settings, draftMode } = props
+  const { data, settings, draftMode } = props
 
-  if (draftMode) {
-    return <PreviewIndexPage posts={posts} settings={settings} />
-  }
+  // if (draftMode) {
+  //   return <PreviewIndexPage data={data} settings={settings} />
+  // }
 
-  return <IndexPage posts={posts} settings={settings} />
+  return <IndexPage data={data} settings={settings} />
 }
 
 export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
   const { draftMode = false } = ctx
   const client = getClient(draftMode ? { token: readToken } : undefined)
 
-  const [settings, posts = []] = await Promise.all([
+  const [settings, data={}] = await Promise.all([
     getSettings(client),
-    getAllPhysiotherapists(client),
+    getHomeData(client),
   ])
-
+  console.log(data)
+  // if(data.physiotherapists.length ===0){
+  //   init()
+  // }
   return {
     props: {
-      posts,
+      data,
       settings,
       draftMode,
       token: draftMode ? readToken : '',

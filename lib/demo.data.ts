@@ -10,7 +10,10 @@ import {
   TherapyMethod,
   WorkExperience,
 } from './sanity.queries'
-
+import { writeToken } from './sanity.api'
+export const title = 'Fisikotherapia'
+export const ogImageTitle = 'Fisikotherapia'
+export const description = 'Fisikotherapia'
 const CV = `Βιογραφικό Τζανίνης Βασίλης 
 Γεννήθηκε στην Αθήνα το 1987 σπούδασε στα τεφαα Αθήνας με ειδικότητες κωπηλάσιας και ειδικής αγωγής. Σπούδασε στο ΠΑΔΑ (πρώην τει Αθήνας)  στο τμήμα φυσικοθεραπείας . υπήρξε 4ος παγκόσμιος πρωταθλητής στην κωπηλάσια και αργότερα εργάσθηκε  ως προπονητής στην εθνική ομάδα της κωπηλάσιας . εργάζεται ως φυσικοθεραπευτής και έχει αντιμετωπίσει πλήθος ασθενών και παθήσεων. Είναι μέλος στον πανελλήνιο σύλλογο φυσικοθεραπευτών .
 Διαθέτει άδεια ασκήσεως επαγγέλματος και ειναι συμβεβλημένος με τον ΕΟΠΥΥ.
@@ -29,7 +32,7 @@ const CV = `Βιογραφικό Τζανίνης Βασίλης
 Email : vasilistzaninis@hotmail.com`
 
 export const demoPhysio = {
-  _id: 'physio123',
+  _id: 'physio1',
   _type: 'physiotherapist',
   name: 'Τζανίνης Βασίλης',
   email: 'vasilistzaninis@hotmail.com',
@@ -264,10 +267,11 @@ export async function init() {
     ...conditionCategories,
     ...conditions,
     
-    // physiotherapist,
+    demoPhysio,
   ] as any[]
-  const client = await getClient()
+  const client = await getClient({token: writeToken})
   objectsToAdd.forEach((object) => {
+    console.log(object)
     client
       .createOrReplace(object)
       .then((res) => {

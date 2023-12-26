@@ -2,6 +2,7 @@ import {
   apiVersion,
   dataset,
   projectId,
+  readToken,
   studioUrl,
   useCdn,
 } from 'lib/sanity.api'
@@ -59,7 +60,7 @@ export function getClient(preview?: { token: string }): SanityClient {
       throw new Error('You must provide a token to preview drafts')
     }
     return client.withConfig({
-      token: preview.token,
+      token: preview.token || readToken,
       useCdn: false,
       ignoreBrowserTokenWarning: true,
       perspective: 'previewDrafts',
@@ -74,7 +75,7 @@ export async function getSettings(client: SanityClient): Promise<Settings> {
   return (await client.fetch(settingsQuery)) || {}
 }
 
-export async function getAllPosts(client: SanityClient): Promise<Post[]> {
+export async function getHomeData(client: SanityClient): Promise<Post[]> {
   return (await client.fetch(indexQuery)) || []
 }
 

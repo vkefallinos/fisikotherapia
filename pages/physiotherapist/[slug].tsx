@@ -1,7 +1,7 @@
 // pages/physiotherapists/[slug].tsx
 
 import { groq } from "next-sanity";
-import { getClient } from "lib/sanity.client";
+import { getAllPhysiotherapists, getClient, getPhysiotherapistBySlug } from "lib/sanity.client";
 import {
   Physiotherapist,
   physiotherapistBySlugQuery,
@@ -38,20 +38,19 @@ export default function PhysiotherapistPage({ physiotherapist }: Props) {
 }
 
 export async function getStaticPaths() {
-  const slugs = await getClient().fetch(physiotherapistBySlugQuery);
-
+  const physiotherapists = (await getAllPhysiotherapists(getClient()));
+  console.log(physiotherapists.map(({ slug }) => ({ params: { slug } })))
   return {
-    paths: slugs.map((slug) => ({ params: { slug } })),
+    paths: physiotherapists.map(({slug}) => ({ params: { slug } })),
     fallback: false,
   };
 }
 
 export async function getStaticProps({ params }) {
-  const physiotherapist = await getClient().fetch(
-    physiotherapistBySlugQuery,
-    { slug: params.slug }
-  );
 
+  console.log( '-----------------------------',params.slug )
+  const physiotherapist = await getPhysiotherapistBySlug(getClient(),params.slug);
+  console.log( '-----------------------------',physiotherapist )
   return {
     props: {
       physiotherapist

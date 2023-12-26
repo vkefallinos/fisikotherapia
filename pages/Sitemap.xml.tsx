@@ -1,4 +1,4 @@
-import { getAllPosts, getClient } from 'lib/sanity.client'
+import { getHomeData, getClient } from 'lib/sanity.client'
 
 type SitemapLocation = {
   url: string
@@ -55,7 +55,7 @@ export async function getServerSideProps({ res }) {
   const client = getClient()
 
   // Get list of Post urls
-  const [posts = []] = await Promise.all([getAllPosts(client)])
+  const [posts = []] = await Promise.all([getHomeData(client)])
   const postUrls: SitemapLocation[] = posts
     .filter(({ slug = '' }) => slug)
     .map((post) => {

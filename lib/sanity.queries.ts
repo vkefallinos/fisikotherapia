@@ -1,5 +1,22 @@
 import { groq } from 'next-sanity'
 
+export interface Author {
+  name?: string
+  picture?: any
+}
+
+export interface Post {
+  _id: string
+  title?: string
+  coverImage?: any
+  date?: string
+  _updatedAt?: string
+  excerpt?: string
+  author?: Author
+  slug?: string
+  content?: any
+}
+
 export const settingsQuery = groq`*[_type == "settings"][0]`
 export const physiotherapistPreviewQuery = groq`
 *[_type == "physiotherapist"] {
@@ -8,9 +25,7 @@ export const physiotherapistPreviewQuery = groq`
     email,
     phone,
     slug
-}`
-export const indexQuery = physiotherapistPreviewQuery
-
+  }`
 export const conditionCategoryPreviewQuery = groq`
 *[_type == "conditionCategory"] {
   _id,
@@ -26,6 +41,15 @@ export const therapyMethodsPreviewQuery = groq`
   description,
   slug
 }`
+export const indexQuery = groq`
+{
+  "physiotherapists": ${physiotherapistPreviewQuery},
+  "conditionCategories": ${conditionCategoryPreviewQuery},
+  "therapyMethods": ${therapyMethodsPreviewQuery}
+}
+
+`
+
 
 export interface Settings {
   title?: string
@@ -86,39 +110,44 @@ export const physiotherapistsQuery = groq`
   }
 `
 
+// export const postBySlugQuery = groq`
+// *[_type == "post" && slug.current == $slug][0] {
+//   ${postFields}
+// }
+// `
 export const physiotherapistBySlugQuery = groq`
-  *[_type == 'physiotherapist' && slug.current == $slug][0] {
+*[_type == 'physiotherapist' && slug.current == $slug][0] {
+  _id,
+  name,
+  email,
+  phone,
+  education[] {
     _id,
-    name,
-    email,
-    phone,
-    education[] {
-      _id,
-      institution,
-      area,
-      startDate,
-      endDate,
-      grade
-    },
-    workExperience[] {
-      _id,
-      company,
-      position,
-      startDate,
-      endDate
-    },
-    skills,
-    licenses[] {
-      _id,
-      licenseType,
-      licensingBody,
-      licenseNumber,
-      issueDate,
-      expiryDate
-    },
-    slug
-  }
-`
+    institution,
+    area,
+    startDate,
+    endDate,
+    grade
+  },
+  workExperience[] {
+    _id,
+    company,
+    position,
+    startDate,
+    endDate
+  },
+  skills,
+  licenses[] {
+    _id,
+    licenseType,
+    licensingBody,
+    licenseNumber,
+    issueDate,
+    expiryDate
+  },
+  slug
+}
+`;
 
 // Education
 export interface Education {

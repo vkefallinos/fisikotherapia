@@ -33,20 +33,16 @@ const iframeOptions = {
 
 export const previewDocumentNode = (): DefaultDocumentNodeResolver => {
   return (S, { schemaType }) => {
-
-    
-        return S.document().views([
-          S.view.form(),
-          S.view
-            .component(({ document }) => (
-              <AuthorAvatarPreviewPane
-                name={document.displayed.name as any}
-                picture={document.displayed.picture as any}
-              />
-            ))
-            .title('Preview'),
-        ])
-
-    }
+    return S.document().views([
+      S.view.form(),
+      S.view
+        .component(({ document }) => (
+          <AuthorAvatarPreviewPane
+            name={document.displayed.name as any}
+            picture={document.displayed.picture as any}
+          />
+        ))
+        .title('Preview'),
+    ])
   }
 }
