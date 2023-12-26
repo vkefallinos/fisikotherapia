@@ -32,7 +32,7 @@ import {
   educationQuery,
   workExperienceQuery,
   licensesQuery,
-  conditionCategoriesQuery,
+  conditionCategoryQuery,
   conditionCategoryBySlugQuery,
   conditionsQuery,
   conditionBySlugQuery,
@@ -106,8 +106,8 @@ export async function getAllLicenses(client: SanityClient) {
 }
 
 // Get all condition categories
-export async function getAllConditionCategories(client: SanityClient) {
-  return await client.fetch(conditionCategoriesQuery);
+export async function getAllconditionCategory(client: SanityClient) {
+  return await client.fetch(conditionCategoryQuery);
 }
 
 // Get a single condition category by slug

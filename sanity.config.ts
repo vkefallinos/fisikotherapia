@@ -19,7 +19,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import settingsType from 'schemas/settings'
 import {
   condition,
-  conditionCategories,
+  conditionCategory,
   exercise,
   physiotherapist,
   therapyMethods,
@@ -41,7 +41,7 @@ export default defineConfig({
       condition,
       therapyMethods,
       therapyPrograms,
-      conditionCategories,
+      conditionCategory,
       exercise,
       settingsType,
     ],

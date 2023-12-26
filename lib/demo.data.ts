@@ -112,17 +112,7 @@ const conditionCategories: ConditionCategory[] = [
     name: 'Μυοσκελετικά',
     description:
       'Τα μυοσκελετικά προβλήματα αφορούν το σύστημα μυών και οστών του ανθρώπινου σώματος.',
-    article: `
-Τα μυοσκελετικά προβλήματα αφορούν το σύστημα μυών και οστών του ανθρώπινου σώματος. Περιλαμβάνουν μια ποικιλία καταστάσεων και παθήσεων που επηρεάζουν τους μυς, τα οστά, τις αρθρώσεις, τους συνδέσμους, τις τένοντες και τα νεύρα. Αυτά τα προβλήματα μπορούν να προκύψουν από τραυματισμούς, φθορά λόγω ηλικίας, χρόνιες παθήσεις όπως η αρθρίτιδα, ή μπορεί να είναι συγγενείς.
-
-Μερικά από τα πιο συνηθισμένα μυοσκελετικά προβλήματα περιλαμβάνουν:
-
-Αρθρίτιδα: Ένας όρος που περιγράφει πάνω από 100 διαφορετικές παθήσεις που προκαλούν πόνο και φλεγμονή στις αρθρώσεις.
-Οστεοπόρωση: Μια κατάσταση που προκαλεί τα οστά να γίνουν αδύναμα και εύθραυστα.
-Ρήξη μηνίσκου: Κοινός τραυματισμός στο γόνατο που συμβαίνει συχνά σε αθλητές.
-Τενοντίτιδα: Φλεγμονή ή ερεθισμός ενός τένοντα, συνήθως λόγω υπερχρήσης ή επαναλαμβανόμενης κίνησης.
-Σπονδυλική στένωση: Στένωση του χώρου γύρω από τον νωτιαίο μυελό, που μπορεί να προκαλέσει πόνο και περιορισμό κίνησης.
-Η διάγνωση και η θεραπεία των μυοσκελετικών προβλημάτων συνήθως περιλαμβάνουν τη χρήση ιατρικών εξετάσεων όπως ακτινογραφίες ή Μαγνητική Τομογραφία, φυσικοθεραπεία, φάρμακα για τη μείωση του πόνου`,
+    article: `Τα μυοσκελετικά προβλήματα αφορούν το σύστημα μυών και οστών του ανθρώπινου σώματος. Περιλαμβάνουν μια ποικιλία καταστάσεων και παθήσεων που επηρεάζουν τους μυς, τα οστά, τις αρθρώσεις, τους συνδέσμους, τις τένοντες και τα νεύρα. Αυτά τα προβλήματα μπορούν να προκύψουν από τραυματισμούς, φθορά λόγω ηλικίας, χρόνιες παθήσεις όπως η αρθρίτιδα, ή μπορεί να είναι συγγενείς.`,
   },
   // Existing category for Orthopedic issues
   {
@@ -165,16 +155,7 @@ const conditions: Condition[] = [
     name: 'Άλγος στον αυχένα',
     description: 'Το Άλγος στον αυχένα, ...',
     categories: [
-      {
-        _id: 'cat1',
-        _type: 'conditionCategory',
-        name: 'Μυοσκελετικά',
-      },
-      {
-        _id: 'cat2',
-        _type: 'conditionCategory',
-        name: 'Ορθοπεδικά',
-      },
+
     ],
   },
   {
@@ -183,16 +164,7 @@ const conditions: Condition[] = [
     name: 'Άλγος στον οσφυ',
     description: 'Το Άλγος στον οσφυ, ...',
     categories: [
-      {
-        _id: 'cat1',
-        _type: 'conditionCategory',
-        name: 'Μυοσκελετικά',
-      },
-      {
-        _id: 'cat2',
-        _type: 'conditionCategory',
-        name: 'Ορθοπεδικά',
-      },
+
     ],
   },
   // Continuing the conditions list
@@ -203,16 +175,7 @@ const conditions: Condition[] = [
     description:
       'Πόνος στα άνω και κάτω άκρα που μπορεί να προκύπτει από διάφορες αιτίες, όπως τραυματισμούς ή χρόνιες παθήσεις.',
     categories: [
-      {
-        _id: 'cat1',
-        _type: 'conditionCategory',
-        name: 'Μυοσκελετικά',
-      },
-      {
-        _id: 'cat2',
-        _type: 'conditionCategory',
-        name: 'Ορθοπεδικά',
-      },
+
     ],
   },
   {
@@ -222,16 +185,7 @@ const conditions: Condition[] = [
     description:
       'Μέθοδοι και προγράμματα αποκατάστασης μετά από χειρουργικές επεμβάσεις για την  μείωση πόνου.',
     categories: [
-      {
-        _id: 'cat3',
-        _type: 'conditionCategory',
-        name: 'Νευρολογικά',
-      },
-      {
-        _id: 'cat2',
-        _type: 'conditionCategory',
-        name: 'Ορθοπεδικά',
-      },
+
     ],
   },
   {
@@ -241,16 +195,7 @@ const conditions: Condition[] = [
     description:
       'Μέθοδοι και προγράμματα αποκατάστασης μετά από χειρουργικές επεμβάσεις για την επαναφορά λειτουργικότητας .',
     categories: [
-      {
-        _id: 'cat3',
-        _type: 'conditionCategory',
-        name: 'Νευρολογικά',
-      },
-      {
-        _id: 'cat2',
-        _type: 'conditionCategory',
-        name: 'Ορθοπεδικά',
-      },
+
     ],
   },
   {
@@ -259,11 +204,7 @@ const conditions: Condition[] = [
     name: ' Αγγειακό εγκεφαλικό επεισόδιο',
     description: 'Το αγγειακό εγκεφαλικό επεισόδιο ..',
     categories: [
-      {
-        _id: 'cat3',
-        _type: 'conditionCategory',
-        name: 'Νευρολογικά',
-      },
+
     ],
   },
   {
@@ -272,11 +213,7 @@ const conditions: Condition[] = [
     name: ' Παρκινσον',
     description: 'Το Παρκινσον ..',
     categories: [
-      {
-        _id: 'cat3',
-        _type: 'conditionCategory',
-        name: 'Νευρολογικά',
-      },
+
     ],
   },
   // Continuing the conditions list
@@ -287,11 +224,7 @@ const conditions: Condition[] = [
     description:
       'Η Πολλαπλή Σκλήρυνση είναι μια χρόνια αυτοάνοση πάθηση που επηρεάζει το κεντρικό νευρικό σύστημα.',
     categories: [
-      {
-        _id: 'cat3',
-        _type: 'conditionCategory',
-        name: 'Νευρολογικά',
-      },
+
     ],
   },
   {
@@ -301,11 +234,7 @@ const conditions: Condition[] = [
     description:
       'Οι αναπνευστικές παθήσεις περιλαμβάνουν καταστάσεις όπως το άσθμα και η χρόνια αποφρακτική πνευμονοπάθεια (ΧΑΠ).',
     categories: [
-      {
-        _id: 'cat4',
-        _type: 'conditionCategory',
-        name: 'Αναπνευστικά',
-      },
+
     ],
   },
   {
@@ -315,11 +244,7 @@ const conditions: Condition[] = [
     description:
       'Οι αθλητικές κακώσεις συμπεριλαμβάνουν τραυματισμούς που συμβαίνουν κατά τη διάρκεια αθλητικών δραστηριοτήτων, όπως θλάσεις, διαστρέμματα και ρήξεις.',
     categories: [
-      {
-        _id: 'cat5',
-        _type: 'conditionCategory',
-        name: 'Αθλητικές κακώσεις',
-      },
+
     ],
   },
   {
@@ -329,22 +254,18 @@ const conditions: Condition[] = [
     description:
       'Οι ημικρανίες είναι επώδυνοι και συχνά επαναλαμβανόμενοι πονοκέφαλοι που μπορεί να συνοδεύονται από άλλα συμπτώματα όπως ναυτία και ευαισθησία στο φως.',
     categories: [
-      {
-        _id: 'cat2',
-        _type: 'conditionCategory',
-        name: 'Ορθοπεδικά',
-      },
+
     ],
   },
 ]
 export async function init() {
   // Add more objects here as needed
   const objectsToAdd = [
-    conditionCategories,
-    conditions,
-    therapyMethods,
-    physiotherapist,
-  ]
+    ...conditionCategories,
+    ...conditions,
+    
+    // physiotherapist,
+  ] as any[]
   const client = await getClient()
   objectsToAdd.forEach((object) => {
     client
@@ -358,4 +279,4 @@ export async function init() {
   })
 }
 
-export default { demoPhysio, conditionCategories, conditions }
+export default { demoPhysio, conditionCategory: conditionCategories, conditions }

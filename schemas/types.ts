@@ -164,8 +164,8 @@ export const license = defineType({
 
 // Other types...
 // Condition Categories
-export const conditionCategories = defineType({
-  name: 'conditionCategories',
+export const conditionCategory = defineType({
+  name: 'conditionCategory',
   title: 'Condition Categories',
   type: 'document',
   fields: [
@@ -222,7 +222,7 @@ export const condition = defineType({
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'conditionCategories' } }]
+      of: [{ type: 'reference', to: { type: 'conditionCategory' } }]
     }),
     defineField({
       name: 'slug',

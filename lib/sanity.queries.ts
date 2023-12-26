@@ -11,7 +11,7 @@ export const physiotherapistPreviewQuery = groq`
 }`
 export const indexQuery = physiotherapistPreviewQuery
 
-export const conditionCategoriesPreviewQuery = groq`
+export const conditionCategoryPreviewQuery = groq`
 *[_type == "conditionCategory"] {
   _id,
   name,
@@ -156,15 +156,15 @@ export interface License {
 export interface ConditionCategory {
   _id: string
   _type: 'conditionCategory'
-  name: string
+  name?: string
   description?: string
   article?: string
   conditions?: Condition[]
   slug?: string
 }
 
-export const conditionCategoriesQuery = groq`
-  *[_type == 'conditionCategories'] {
+export const conditionCategoryQuery = groq`
+  *[_type == 'conditionCategory'] {
     _id,
     name,
     description,
@@ -180,7 +180,7 @@ export const conditionCategoriesQuery = groq`
 export interface Condition {
   _id: string
   _type: 'condition'
-  name: string
+  name?: string
   description?: string
   article?: string
   categories?: ConditionCategory[]
@@ -340,7 +340,7 @@ export const licensesQuery = groq`
 
 // Query to get a single condition category by slug
 export const conditionCategoryBySlugQuery = groq`
-  *[_type == 'conditionCategories' && slug.current == $slug][0] {
+  *[_type == 'conditionCategory' && slug.current == $slug][0] {
     _id,
     name,
     description,
