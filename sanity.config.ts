@@ -16,11 +16,15 @@ import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { presentationTool } from 'sanity/presentation'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import authorType from 'schemas/author'
-import fisikotherapeftisType from 'schemas/fisikotherapeftis'
-import pathisiType from 'schemas/pathisi'
-import postType from 'schemas/post'
 import settingsType from 'schemas/settings'
+import {
+  condition,
+  conditionCategories,
+  exercise,
+  physiotherapist,
+  therapyMethods,
+  therapyPrograms,
+} from 'schemas/types'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Next.js Blog with Sanity.io'
@@ -33,10 +37,12 @@ export default defineConfig({
   schema: {
     // If you want more content types, you can add them to this array
     types: [
-      authorType,
-      postType,
-      fisikotherapeftisType,
-      pathisiType,
+      physiotherapist,
+      condition,
+      therapyMethods,
+      therapyPrograms,
+      conditionCategories,
+      exercise,
       settingsType,
     ],
   },

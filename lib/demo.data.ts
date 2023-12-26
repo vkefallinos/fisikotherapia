@@ -1,6 +1,15 @@
 import { physiotherapist, therapyMethods } from 'schemas/types'
-import { Physiotherapist, Education, WorkExperience, License, TherapyMethod, ConditionCategory, Condition } from './sanity.queries'
+
 import { getClient } from './sanity.client'
+import {
+  Condition,
+  ConditionCategory,
+  Education,
+  License,
+  Physiotherapist,
+  TherapyMethod,
+  WorkExperience,
+} from './sanity.queries'
 
 const CV = `Βιογραφικό Τζανίνης Βασίλης 
 Γεννήθηκε στην Αθήνα το 1987 σπούδασε στα τεφαα Αθήνας με ειδικότητες κωπηλάσιας και ειδικής αγωγής. Σπούδασε στο ΠΑΔΑ (πρώην τει Αθήνας)  στο τμήμα φυσικοθεραπείας . υπήρξε 4ος παγκόσμιος πρωταθλητής στην κωπηλάσια και αργότερα εργάσθηκε  ως προπονητής στην εθνική ομάδα της κωπηλάσιας . εργάζεται ως φυσικοθεραπευτής και έχει αντιμετωπίσει πλήθος ασθενών και παθήσεων. Είναι μέλος στον πανελλήνιο σύλλογο φυσικοθεραπευτών .
@@ -33,7 +42,7 @@ export const demoPhysio = {
       area: 'Κωπηλασία',
       startDate: '2005-09-01',
       endDate: '2009-06-30',
-      grade: 'Πτυχίο'
+      grade: 'Πτυχίο',
     },
     {
       _id: 'edu2',
@@ -42,8 +51,8 @@ export const demoPhysio = {
       area: 'Φυσικοθεραπεία',
       startDate: '2010-09-01',
       endDate: '2014-06-30',
-      grade: 'Πτυχίο'
-    }
+      grade: 'Πτυχίο',
+    },
   ],
   workExperience: [
     {
@@ -52,8 +61,8 @@ export const demoPhysio = {
       company: 'Εθνική Ομάδα Κωπηλασίας',
       position: 'Προπονητής',
       startDate: '2009-09-01',
-      endDate: '2015-06-30'
-    }
+      endDate: '2015-06-30',
+    },
   ],
 
   licenses: [
@@ -64,46 +73,36 @@ export const demoPhysio = {
       licensingBody: 'Υπουργείο Υγείας',
       licenseNumber: '1234',
       issueDate: '2014-07-01',
-      expiryDate: ''
-    }
+      expiryDate: '',
+    },
   ],
 
-skills: [
-  {
-    _id: 'method1',
-    _type: 'therapyMethod',
-   
-  },
-  {
-    _id: 'method2',
-    _type: 'therapyMethod',
-  },
-  {
-    _id: 'method3',
-    _type: 'therapyMethod',
-
-  },
-  {
-    _id: 'method4',
-    _type: 'therapyMethod',
-
-  },
-  {
-    _id: 'method5',
-    _type: 'therapyMethod',
-
-  }
-],
-
-
-  conditions: [
-
+  skills: [
+    {
+      _id: 'method1',
+      _type: 'therapyMethod',
+    },
+    {
+      _id: 'method2',
+      _type: 'therapyMethod',
+    },
+    {
+      _id: 'method3',
+      _type: 'therapyMethod',
+    },
+    {
+      _id: 'method4',
+      _type: 'therapyMethod',
+    },
+    {
+      _id: 'method5',
+      _type: 'therapyMethod',
+    },
   ],
 
+  conditions: [],
 
-
-
-  slug: 'vasilis-tzaninis'
+  slug: 'vasilis-tzaninis',
 }
 
 const conditionCategories: ConditionCategory[] = [
@@ -111,7 +110,8 @@ const conditionCategories: ConditionCategory[] = [
     _id: 'cat1',
     _type: 'conditionCategory',
     name: 'Μυοσκελετικά',
-    description: 'Τα μυοσκελετικά προβλήματα αφορούν το σύστημα μυών και οστών του ανθρώπινου σώματος.',
+    description:
+      'Τα μυοσκελετικά προβλήματα αφορούν το σύστημα μυών και οστών του ανθρώπινου σώματος.',
     article: `
 Τα μυοσκελετικά προβλήματα αφορούν το σύστημα μυών και οστών του ανθρώπινου σώματος. Περιλαμβάνουν μια ποικιλία καταστάσεων και παθήσεων που επηρεάζουν τους μυς, τα οστά, τις αρθρώσεις, τους συνδέσμους, τις τένοντες και τα νεύρα. Αυτά τα προβλήματα μπορούν να προκύψουν από τραυματισμούς, φθορά λόγω ηλικίας, χρόνιες παθήσεις όπως η αρθρίτιδα, ή μπορεί να είναι συγγενείς.
 
@@ -122,36 +122,40 @@ const conditionCategories: ConditionCategory[] = [
 Ρήξη μηνίσκου: Κοινός τραυματισμός στο γόνατο που συμβαίνει συχνά σε αθλητές.
 Τενοντίτιδα: Φλεγμονή ή ερεθισμός ενός τένοντα, συνήθως λόγω υπερχρήσης ή επαναλαμβανόμενης κίνησης.
 Σπονδυλική στένωση: Στένωση του χώρου γύρω από τον νωτιαίο μυελό, που μπορεί να προκαλέσει πόνο και περιορισμό κίνησης.
-Η διάγνωση και η θεραπεία των μυοσκελετικών προβλημάτων συνήθως περιλαμβάνουν τη χρήση ιατρικών εξετάσεων όπως ακτινογραφίες ή Μαγνητική Τομογραφία, φυσικοθεραπεία, φάρμακα για τη μείωση του πόνου`
+Η διάγνωση και η θεραπεία των μυοσκελετικών προβλημάτων συνήθως περιλαμβάνουν τη χρήση ιατρικών εξετάσεων όπως ακτινογραφίες ή Μαγνητική Τομογραφία, φυσικοθεραπεία, φάρμακα για τη μείωση του πόνου`,
   },
   // Existing category for Orthopedic issues
   {
     _id: 'cat2',
     _type: 'conditionCategory',
     name: 'Ορθοπεδικά',
-    description: 'Τα ορθοπεδικά προβλήματα εστιάζουν στις παθήσεις και τις κακώσεις του μυοσκελετικού συστήματος, περιλαμβάνοντας θέματα στα οστά, τις αρθρώσεις, τους συνδέσμους, τους μύες και τους τένοντες.'
+    description:
+      'Τα ορθοπεδικά προβλήματα εστιάζουν στις παθήσεις και τις κακώσεις του μυοσκελετικού συστήματος, περιλαμβάνοντας θέματα στα οστά, τις αρθρώσεις, τους συνδέσμους, τους μύες και τους τένοντες.',
   },
   // New category for Neurological issues
   {
     _id: 'cat3',
     _type: 'conditionCategory',
     name: 'Νευρολογικά',
-    description: 'Οι νευρολογικές παθήσεις περιλαμβάνουν διαταραχές που επηρεάζουν το νευρικό σύστημα, όπως το εγκεφαλικό επεισόδιο, η νόσος Πάρκινσον και η πολλαπλή σκλήρυνση.'
+    description:
+      'Οι νευρολογικές παθήσεις περιλαμβάνουν διαταραχές που επηρεάζουν το νευρικό σύστημα, όπως το εγκεφαλικό επεισόδιο, η νόσος Πάρκινσον και η πολλαπλή σκλήρυνση.',
   },
   // New category for Respiratory issues
   {
     _id: 'cat4',
     _type: 'conditionCategory',
     name: 'Αναπνευστικά',
-    description: 'Αναπνευστικές παθήσεις αναφέρονται σε καταστάσεις που επηρεάζουν τους πνεύμονες και την αναπνευστική ικανότητα, όπως άσθμα και χρόνια αποφρακτική πνευμονοπάθεια (ΧΑΠ).'
+    description:
+      'Αναπνευστικές παθήσεις αναφέρονται σε καταστάσεις που επηρεάζουν τους πνεύμονες και την αναπνευστική ικανότητα, όπως άσθμα και χρόνια αποφρακτική πνευμονοπάθεια (ΧΑΠ).',
   },
   // New category for Sports Injuries
   {
     _id: 'cat5',
     _type: 'conditionCategory',
     name: 'Αθλητικές κακώσεις',
-    description: 'Αθλητικές κακώσεις αναφέρονται σε τραυματισμούς που συμβαίνουν κατά την άσκηση ή κατά τη διάρκεια αθλητικών δραστηριοτήτων, συχνά επηρεάζοντας τους μύες, τις αρθρώσεις και τους τένοντες
-  }
+    description:
+      'Αθλητικές κακώσεις αναφέρονται σε τραυματισμούς που συμβαίνουν κατά την άσκηση ή κατά τη διάρκεια αθλητικών δραστηριοτήτων, συχνά επηρεάζοντας τους μύες, τις αρθρώσεις και τους τένοντες',
+  },
 ]
 
 const conditions: Condition[] = [
@@ -163,13 +167,15 @@ const conditions: Condition[] = [
     categories: [
       {
         _id: 'cat1',
-        _type: 'conditionCategory', name: 'Μυοσκελετικά'
+        _type: 'conditionCategory',
+        name: 'Μυοσκελετικά',
       },
       {
         _id: 'cat2',
-        _type: 'conditionCategory', name: 'Ορθοπεδικά'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Ορθοπεδικά',
+      },
+    ],
   },
   {
     _id: 'cond1',
@@ -179,62 +185,73 @@ const conditions: Condition[] = [
     categories: [
       {
         _id: 'cat1',
-        _type: 'conditionCategory', name: 'Μυοσκελετικά'
+        _type: 'conditionCategory',
+        name: 'Μυοσκελετικά',
       },
       {
         _id: 'cat2',
-        _type: 'conditionCategory', name: 'Ορθοπεδικά'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Ορθοπεδικά',
+      },
+    ],
   },
   // Continuing the conditions list
   {
     _id: 'cond3',
     _type: 'condition',
     name: 'Πόνος στα άνω και κάτω άκρα',
-    description: 'Πόνος στα άνω και κάτω άκρα που μπορεί να προκύπτει από διάφορες αιτίες, όπως τραυματισμούς ή χρόνιες παθήσεις.',
+    description:
+      'Πόνος στα άνω και κάτω άκρα που μπορεί να προκύπτει από διάφορες αιτίες, όπως τραυματισμούς ή χρόνιες παθήσεις.',
     categories: [
       {
         _id: 'cat1',
-        _type: 'conditionCategory', name: 'Μυοσκελετικά'
+        _type: 'conditionCategory',
+        name: 'Μυοσκελετικά',
       },
       {
         _id: 'cat2',
-        _type: 'conditionCategory', name: 'Ορθοπεδικά'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Ορθοπεδικά',
+      },
+    ],
   },
   {
     _id: 'cond4',
     _type: 'condition',
     name: 'Μετεγχειρητική αποκατάσταση για μείωση πόνου',
-    description: 'Μέθοδοι και προγράμματα αποκατάστασης μετά από χειρουργικές επεμβάσεις για την  μείωση πόνου.',
+    description:
+      'Μέθοδοι και προγράμματα αποκατάστασης μετά από χειρουργικές επεμβάσεις για την  μείωση πόνου.',
     categories: [
       {
         _id: 'cat3',
-        _type: 'conditionCategory', name: 'Νευρολογικά'
+        _type: 'conditionCategory',
+        name: 'Νευρολογικά',
       },
       {
         _id: 'cat2',
-        _type: 'conditionCategory', name: 'Ορθοπεδικά'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Ορθοπεδικά',
+      },
+    ],
   },
   {
     _id: 'cond5',
     _type: 'condition',
     name: 'Μετεγχειρητική αποκατάσταση για επαναφορά λειτουργικότητας ',
-    description: 'Μέθοδοι και προγράμματα αποκατάστασης μετά από χειρουργικές επεμβάσεις για την επαναφορά λειτουργικότητας .',
+    description:
+      'Μέθοδοι και προγράμματα αποκατάστασης μετά από χειρουργικές επεμβάσεις για την επαναφορά λειτουργικότητας .',
     categories: [
       {
         _id: 'cat3',
-        _type: 'conditionCategory', name: 'Νευρολογικά'
+        _type: 'conditionCategory',
+        name: 'Νευρολογικά',
       },
       {
         _id: 'cat2',
-        _type: 'conditionCategory', name: 'Ορθοπεδικά'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Ορθοπεδικά',
+      },
+    ],
   },
   {
     _id: 'cond6',
@@ -244,9 +261,10 @@ const conditions: Condition[] = [
     categories: [
       {
         _id: 'cat3',
-        _type: 'conditionCategory', name: 'Νευρολογικά'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Νευρολογικά',
+      },
+    ],
   },
   {
     _id: 'cond7',
@@ -256,74 +274,88 @@ const conditions: Condition[] = [
     categories: [
       {
         _id: 'cat3',
-        _type: 'conditionCategory', name: 'Νευρολογικά'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Νευρολογικά',
+      },
+    ],
   },
   // Continuing the conditions list
   {
     _id: 'cond8',
     _type: 'condition',
     name: 'Πολλαπλή Σκλήρυνση',
-    description: 'Η Πολλαπλή Σκλήρυνση είναι μια χρόνια αυτοάνοση πάθηση που επηρεάζει το κεντρικό νευρικό σύστημα.',
+    description:
+      'Η Πολλαπλή Σκλήρυνση είναι μια χρόνια αυτοάνοση πάθηση που επηρεάζει το κεντρικό νευρικό σύστημα.',
     categories: [
       {
         _id: 'cat3',
-        _type: 'conditionCategory', name: 'Νευρολογικά'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Νευρολογικά',
+      },
+    ],
   },
   {
     _id: 'cond9',
     _type: 'condition',
     name: 'Αναπνευστικές παθήσεις',
-    description: 'Οι αναπνευστικές παθήσεις περιλαμβάνουν καταστάσεις όπως το άσθμα και η χρόνια αποφρακτική πνευμονοπάθεια (ΧΑΠ).',
+    description:
+      'Οι αναπνευστικές παθήσεις περιλαμβάνουν καταστάσεις όπως το άσθμα και η χρόνια αποφρακτική πνευμονοπάθεια (ΧΑΠ).',
     categories: [
       {
         _id: 'cat4',
-        _type: 'conditionCategory', name: 'Αναπνευστικά'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Αναπνευστικά',
+      },
+    ],
   },
   {
     _id: 'cond10',
     _type: 'condition',
     name: 'Αθλητικές κακώσεις',
-    description: 'Οι αθλητικές κακώσεις συμπεριλαμβάνουν τραυματισμούς που συμβαίνουν κατά τη διάρκεια αθλητικών δραστηριοτήτων, όπως θλάσεις, διαστρέμματα και ρήξεις.',
+    description:
+      'Οι αθλητικές κακώσεις συμπεριλαμβάνουν τραυματισμούς που συμβαίνουν κατά τη διάρκεια αθλητικών δραστηριοτήτων, όπως θλάσεις, διαστρέμματα και ρήξεις.',
     categories: [
       {
         _id: 'cat5',
-        _type: 'conditionCategory', name: 'Αθλητικές κακώσεις'
-      }
-    ]
+        _type: 'conditionCategory',
+        name: 'Αθλητικές κακώσεις',
+      },
+    ],
   },
   {
     _id: 'cond11',
     _type: 'condition',
     name: 'Ημικρανίες',
-    description: 'Οι ημικρανίες είναι επώδυνοι και συχνά επαναλαμβανόμενοι πονοκέφαλοι που μπορεί να συνοδεύονται από άλλα συμπτώματα όπως ναυτία και ευαισθησία στο φως.',
+    description:
+      'Οι ημικρανίες είναι επώδυνοι και συχνά επαναλαμβανόμενοι πονοκέφαλοι που μπορεί να συνοδεύονται από άλλα συμπτώματα όπως ναυτία και ευαισθησία στο φως.',
     categories: [
       {
         _id: 'cat2',
-        _type: 'conditionCategory', name: 'Ορθοπεδικά'
-      }
-    ]
-  }
+        _type: 'conditionCategory',
+        name: 'Ορθοπεδικά',
+      },
+    ],
+  },
 ]
-export function init() {
+export async function init() {
   // Add more objects here as needed
-  const objectsToAdd = [conditionCategories, conditions, therapyMethods, physiotherapist,]
+  const objectsToAdd = [
+    conditionCategories,
+    conditions,
+    therapyMethods,
+    physiotherapist,
+  ]
   const client = await getClient()
-  objectsToAdd.forEach(object => {
-    client.createOrReplace(object)
-      .then(res => {
+  objectsToAdd.forEach((object) => {
+    client
+      .createOrReplace(object)
+      .then((res) => {
         console.log(`Document was created, document ID is ${res._id}`)
       })
-      .catch(err => {
+      .catch((err) => {
         console.error('Upload failed:', err.message)
       })
   })
 }
 
-  
-export default { demoPhysio, conditionCategories, conditions };
+export default { demoPhysio, conditionCategories, conditions }
