@@ -1,8 +1,12 @@
 import IndexPage from 'components/IndexPage'
 import PreviewIndexPage from 'components/PreviewIndexPage'
 import { readToken } from 'lib/sanity.api'
-import { getAllPosts, getClient, getSettings } from 'lib/sanity.client'
-import { Post, Settings } from 'lib/sanity.queries'
+import {
+  getAllPhysiotherapists,
+  getClient,
+  getSettings,
+} from 'lib/sanity.client'
+import { Settings } from 'lib/sanity.queries'
 import { GetStaticProps } from 'next'
 import type { SharedPageProps } from 'pages/_app'
 
@@ -31,7 +35,7 @@ export const getStaticProps: GetStaticProps<PageProps, Query> = async (ctx) => {
 
   const [settings, posts = []] = await Promise.all([
     getSettings(client),
-    getAllPosts(client),
+    getAllPhysiotherapists(client),
   ])
 
   return {

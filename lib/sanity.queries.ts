@@ -1,7 +1,6 @@
 import { groq } from 'next-sanity'
 
 export const settingsQuery = groq`*[_type == "settings"][0]`
-
 export const physiotherapistPreviewQuery = groq`
 *[_type == "physiotherapist"] {
       _id, 
@@ -10,6 +9,7 @@ export const physiotherapistPreviewQuery = groq`
     phone,
     slug
 }`
+export const indexQuery = physiotherapistPreviewQuery
 
 export const conditionCategoriesPreviewQuery = groq`
 *[_type == "conditionCategory"] {
@@ -35,21 +35,21 @@ export interface Settings {
   }
 }
 
-// Existing imports and queries 
+// Existing imports and queries
 
-// Physiotherapist 
+// Physiotherapist
 export interface Physiotherapist {
-  _id: string;
-  _type: 'physiotherapist';
-  name: string;
-  email: string;
-  phone: string;
-  education: Education[];
-  workExperience: WorkExperience[];
-  skills?: TherapyMethod[];
-  conditions?: Condition[];
-  licenses: License[];
-  slug: string;
+  _id: string
+  _type: 'physiotherapist'
+  name: string
+  email: string
+  phone: string
+  education: Education[]
+  workExperience: WorkExperience[]
+  skills?: TherapyMethod[]
+  conditions?: Condition[]
+  licenses: License[]
+  slug: string
 }
 
 export const physiotherapistsQuery = groq`
@@ -84,7 +84,7 @@ export const physiotherapistsQuery = groq`
     },
     slug
   }
-`;
+`
 
 export const physiotherapistBySlugQuery = groq`
   *[_type == 'physiotherapist' && slug.current == $slug][0] {
@@ -118,49 +118,49 @@ export const physiotherapistBySlugQuery = groq`
     },
     slug
   }
-`;
+`
 
 // Education
 export interface Education {
-  _id: string;
-  _type: 'education';
-  institution: string;
-  area: string;
-  startDate: string;
-  endDate: string;
-  grade: string;
+  _id: string
+  _type: 'education'
+  institution: string
+  area: string
+  startDate: string
+  endDate: string
+  grade: string
 }
 
 // Work Experience
 export interface WorkExperience {
-  _id: string;
-  _type: 'workExperience';
-  company: string;
-  position: string;
-  startDate: string;
-  endDate: string;
+  _id: string
+  _type: 'workExperience'
+  company: string
+  position: string
+  startDate: string
+  endDate: string
 }
 
 // License
 export interface License {
-  _id: string;
-  _type: 'license';
-  licenseType: string;
-  licensingBody: string;
-  licenseNumber: string;
-  issueDate: string;
-  expiryDate: string;
+  _id: string
+  _type: 'license'
+  licenseType: string
+  licensingBody: string
+  licenseNumber: string
+  issueDate: string
+  expiryDate: string
 }
 
 // Condition Categories
 export interface ConditionCategory {
-  _id: string;
-  _type: 'conditionCategory';
-  name: string;
-  description?: string;
-  article?: string;
-  conditions?: Condition[];
-  slug?: string;
+  _id: string
+  _type: 'conditionCategory'
+  name: string
+  description?: string
+  article?: string
+  conditions?: Condition[]
+  slug?: string
 }
 
 export const conditionCategoriesQuery = groq`
@@ -174,47 +174,47 @@ export const conditionCategoriesQuery = groq`
     },
     slug
   }
-`;
+`
 
-// Condition 
+// Condition
 export interface Condition {
-  _id: string;
-  _type: 'condition';
-  name: string;
-  description?: string;
-  article?: string;
-  categories?: ConditionCategory[];
-  slug?: string;
+  _id: string
+  _type: 'condition'
+  name: string
+  description?: string
+  article?: string
+  categories?: ConditionCategory[]
+  slug?: string
 }
 
 // Therapy Methods
 export interface TherapyMethod {
-  _id: string;
-  _type: 'therapyMethod';
-  name: string;
-  description: string;
-  article?: string;
-  conditions?: Condition[];
+  _id: string
+  _type: 'therapyMethod'
+  name: string
+  description: string
+  article?: string
+  conditions?: Condition[]
 }
 
 // Therapy Programs
 export interface TherapyProgram {
-  _id: string;
-  _type: 'therapyProgram';
-  name: string;
-  description: string;
-  article: string;
-  conditions: Condition[];
+  _id: string
+  _type: 'therapyProgram'
+  name: string
+  description: string
+  article: string
+  conditions: Condition[]
 }
 
 // Exercise
 export interface Exercise {
-  _id: string;
-  _type: 'exercise';
-  name: string;
-  description: string;
-  article: string;
-  conditions: Condition[];
+  _id: string
+  _type: 'exercise'
+  name: string
+  description: string
+  article: string
+  conditions: Condition[]
 }
 
 // Additional queries...
@@ -231,7 +231,7 @@ export const conditionsQuery = groq`
     },
     slug
   }
-`;
+`
 
 export const conditionBySlugQuery = groq`
   *[_type == 'condition' && slug.current == $slug][0] {
@@ -245,7 +245,7 @@ export const conditionBySlugQuery = groq`
     },
     slug
   }
-`;
+`
 
 // Therapy Methods
 export const therapyMethodsQuery = groq`
@@ -259,7 +259,7 @@ export const therapyMethodsQuery = groq`
       name
     }
   }
-`;
+`
 
 // Therapy Programs
 export const therapyProgramsQuery = groq`
@@ -273,7 +273,7 @@ export const therapyProgramsQuery = groq`
       name  
     }
   }
-`;
+`
 
 // Exercises
 export const exercisesQuery = groq`
@@ -287,7 +287,7 @@ export const exercisesQuery = groq`
       name
     }
   }
-`;
+`
 
 // Query to get a single exercise by slug
 export const exerciseBySlugQuery = groq`
@@ -301,8 +301,7 @@ export const exerciseBySlugQuery = groq`
       name
     }
   }
-`;
-
+`
 
 // Query to get all education documents
 export const educationQuery = groq`
@@ -316,7 +315,7 @@ export const educationQuery = groq`
   }
 `
 
-// Query to get all work experience documents  
+// Query to get all work experience documents
 export const workExperienceQuery = groq`
   *[_type == 'workExperience'] {
     _id,
